@@ -20,20 +20,21 @@ btn.addEventListener('click', ()=> {
             noteList.appendChild(newLi);
             newLi.addEventListener('click', (e) => {
                 input.value = newLi.textContent;
-                e.path[0].nextSibling.remove();
-                e.path[0].remove();
+                e.target.nextSibling.remove();
+                e.target.remove();
             })
             let btn = document.createElement('button');
             btn.textContent = 'delete';
             notes.appendChild(btn);
             btn.addEventListener('click', e => {
+                console.log(e.target);
                 archiveNotes.forEach((element, index) => {
-                    if(e.path[0].previousSibling.textContent == element) {
+                    if(e.target.previousSibling.textContent == element) {
                         archiveNotes.splice(index, 1);
                     }  
                 });
-                e.path[0].previousSibling.remove();
-                e.path[0].remove();
+                e.target.previousSibling.remove();
+                e.target.remove();
                 console.log(archiveNotes);
 
             });
